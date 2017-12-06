@@ -6,8 +6,8 @@
 #devtools::install_github("massimoaria/bibliometrix")
 library(bibliometrix) #See http://www.bibliometrix.org/
 
-fname="./literature/ensemble_drought_not_multi-model.bib"
-name=paste(strsplit(strsplit(fname,"/")[[1]][length(strsplit(fname,"/")[[1]])],".bib"))
+fname <- "./literature/ensemble_drought_not_multi-model.bib"
+name <- paste(strsplit(strsplit(fname,"/")[[1]][length(strsplit(fname,"/")[[1]])],".bib"))
 
 D <- readFiles(fname)
 M <- convert2df(D, dbsource = "isi", format = "bibtex")
@@ -61,6 +61,6 @@ toMatch <- c("18","EUROPE")
 matched_sentences <- tolower(unlist(strsplit(abstracts, split = "\\."))[grep(paste(toMatch, collapse="|"), unlist(strsplit(abstracts, split = "\\.")))])
 matched_sentences <- paste0(matched_sentences, " [", substr(names(matched_sentences), 1, nchar(names(matched_sentences))-1), "]") 
 
-toMatch=paste(toMatch,collapse='')
+toMatch <- paste(toMatch,collapse='')
 write(matched_sentences, file = paste("literature/",name,"_",toMatch,".txt",sep=""))
 
