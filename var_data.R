@@ -57,7 +57,7 @@ for(i in unique(dta$REG)){
   }
 }
 x <- matrix(as.numeric(mean_dta_met[,5:14]),nrow=nrow(mean_dta_met))
-var_dta_met <- cbind(mean_dta_met
+mean_dta_met <- cbind(mean_dta_met
                      ,apply(x,1,mean)
                      ,apply(x,1,function(x) out_test(x)))
 
@@ -121,3 +121,13 @@ colnames(mean_dta_met)[c(1:4,15:16)] <- c("REG","var","yr","MEAS","MEAN","OUT")
 colnames(mean_dta_par)[c(1:4,15:16)] <- c("REG","var","yr","MEAS","MEAN","OUT")
 colnames(range_dta_met)[c(1:4,15:16)] <- c("REG","var","yr","MEAS","MEAN","OUT")
 colnames(range_dta_par)[c(1:4,15:16)] <- c("REG","var","yr","MEAS","MEAN","OUT")
+
+################################## save data
+
+saveRDS(var_dta_met,"var_dta_met.RDS")
+saveRDS(var_dta_par,"var_dta_par.RDS")
+saveRDS(range_dta_met,"range_dta_met.RDS")
+saveRDS(range_dta_par,"range_dta_par.RDS")
+saveRDS(mean_dta_met,"mean_dta_met.RDS")
+saveRDS(mean_dta_par,"mean_dta_par.RDS")
+##################################
